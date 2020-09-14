@@ -1,0 +1,43 @@
+/* body */
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+/* header */
+.navbar {
+  border-radius: 0px;
+}
+.navbar-logo {
+  width: 150px;
+}
+
+/* main */
+main {
+  flex: 1;
+}
+
+
+/* footer */
+footer {
+  background: #343a40;
+  color: #fff;
+  text-align: center;
+}
+
+// contents
+.contents {
+  max-width: 600px;
+  margin-top: 50px;
+  .top-title {
+    font-size: 30px;
+    color: #FF00FF;
+  }
+  button {
+  padding: 8px 16px;
+  font-size: 14px;
+  }
+
+}
