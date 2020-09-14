@@ -34,6 +34,7 @@ group :development, :test do
     #RspecとFactory_botの追加
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem 'spring-commands-rspec'
 end
 
 group :development do
