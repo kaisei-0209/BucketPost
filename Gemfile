@@ -61,4 +61,15 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.5.2'
 gem 'jquery-rails'
 
+#ログイン機能追加
+gem 'devise'
+
+# 日本語化
+gem 'rails-i18n', '~> 6.0'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+# deviseのBootstrap
+gem 'devise-bootstrap-views', '~> 1.0'
+
 
