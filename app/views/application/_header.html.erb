@@ -7,17 +7,28 @@
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
         <li class="nav-item"><%= link_to  "投稿一覧", "#", class: 'nav-link' %></li>
+        <% else %>
         <li class="nav-item"><%= link_to  "オススメトレーニング", "#", class: 'nav-link' %></li>
+        <% end %>
       </ul>
-
       <ul class="navbar-nav">
+        <% if user_signed_in? %>
         <li class="nav-item dropdown">
-          <%= link_to  "ログイン", "#", class: "nav-link" %>
+          <%= link_to  "新規投稿", "#", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to  "新規登録", "#", class: "nav-link" %>
+          <%= link_to  "ログアウト", sign_out_path, class: "nav-link" %>
         </li>
+        <% else %>
+        <li class="nav-item dropdown">
+          <%= link_to  "ログイン", new_user_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to  "新規登録", new_user_registration_path, class: "nav-link" %>
+        </li>
+        <% end %>
       </ul>
     </div>
   </div>
