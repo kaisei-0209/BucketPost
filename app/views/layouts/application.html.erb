@@ -13,8 +13,7 @@
 
 <body>
   <%= render 'header' %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <%= render "users/shared/notifications" %>
   <main><%= yield %></main>
   <%= render 'footer' %>
 </body>

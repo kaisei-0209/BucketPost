@@ -15,20 +15,22 @@
 @import "bootstrap/scss/bootstrap";
 @import "base";
 
-// ログイン画面
+// Userフォーム画面
 
-.container-login {
+
+.user_form {
   @extend .container-fluid;
   max-width: 576px;
   padding: 2rem;
 }
 
-// 「ログインしました」などのフラッシュ用スタイル
-
-.alert-notice {
-  @extend .alert-info;
+//flashメッセージ
+.notice {
+  color: white;
+  background-color: blue;
+}
+.alert {
+  color: white;
+  background-color: red;
 }
 
-.alert-alert {
-  @extend .alert-danger;
-}
