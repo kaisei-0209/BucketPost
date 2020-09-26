@@ -12,5 +12,21 @@ class User < ApplicationRecord
                   uniqueness: true,
                   length: { maximum: 255 },
                   format: { with: VALID_EMAIL_REGEX }
-        validates :password, presence: true, length: { minimum: 6 }
+        #createアクションにのみpasswordを適用する
+        validates :password, presence: true, length: { minimum: 6 }, on: :create
+        validates :profile, length: { maximum: 200 }
+
+        #passowordなしでアップデートする
+        def update_without_current_password(params, *options)
+          params.delete(:current_password)
+
+          if params[:password].blank? && params[:password_confirmation].blank?
+            params.delete(:password)
+            params.delete(:password_confirmation)
+          end
+
+          result = update_attributes(params, *options)
+          clean_up_passwords
+          result
+        end
 end
