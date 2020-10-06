@@ -72,4 +72,6 @@ gem 'devise-i18n-views'
 # deviseのBootstrap
 gem 'devise-bootstrap-views', '~> 1.0'
 
+#画像アップロード機能追加
+gem 'carrierwave'
 
