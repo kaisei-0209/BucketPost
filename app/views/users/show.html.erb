@@ -3,7 +3,14 @@
 <div class="container mt-5">
   <div class="row mx-auto" style="max-width: 700px;">
     <div class="pl-5 col-md-5">
-      <h1>画像を入れる</h1>
+      <%
+=begin%>
+      画像を表示する
+      <%
+=end%>
+      <% if @user.image? %>
+      <%= image_tag @user.image.url %>
+      <% end %>
     </div>
     <div class="d-flex flex-column mt-3 col-md-7">
       <div class="user-name font-weight-bold pb-2">
