@@ -75,3 +75,5 @@ gem 'devise-bootstrap-views', '~> 1.0'
 #画像アップロード機能追加
 gem 'carrierwave'
 
+#画像の大きさを設定する
+gem 'rmagick'

@@ -39,6 +39,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+
+  #ユーザー登録後のリダイレクト先をtopページにする
+  def after_inactive_sign_up_path_for(resource)
+    root_path
+  end
+
   #ユーザー情報を編集する際にパスワード無しで編集可能にする
     def update_resource(resource, params)
       resource.update_without_password(params)
