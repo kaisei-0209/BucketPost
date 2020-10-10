@@ -57,7 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #update後ユーザー詳細ページにリダイレクトする
   def after_update_path_for(resource)
-    flash.now[:notice] = "更新しました"
+    flash[:notice] = "更新しました"
     user_path(resource)
   end
 

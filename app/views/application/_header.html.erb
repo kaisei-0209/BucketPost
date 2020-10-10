@@ -27,6 +27,9 @@
               <%= link_to  "マイページ", user_path(current_user), class: "dropdown-item" %>
             </li>
             <li class="nav-item">
+              <%= link_to  "プロフィール編集", edit_user_registration_path, class: "dropdown-item" %>
+            </li>
+            <li class="nav-item">
               <%= link_to  "ログアウト", sign_out_path, class: "dropdown-item" %>
             </li>
           </ul>
