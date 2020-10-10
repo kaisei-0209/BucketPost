@@ -40,9 +40,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  #ユーザー登録後のリダイレクト先をtopページにする
-  def after_inactive_sign_up_path_for(resource)
-    root_path
+  #ユーザー登録後のリダイレクト先をユーザー詳細ページする
+  def after_sign_up_path_for(resource)
+    user_path(resource)
   end
 
   #ユーザー情報を編集する際にパスワード無しで編集可能にする
@@ -55,10 +55,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user_path(id: current_user.id)
   end
 
-  #update後top画面にリダイレクトする
-  def after_update_path_for(_resource)
-    flash.now[:notice] = "新規登録完了しました"
-    root_path
+  #update後ユーザー詳細ページにリダイレクトする
+  def after_update_path_for(resource)
+    flash.now[:notice] = "更新しました"
+    user_path(resource)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
