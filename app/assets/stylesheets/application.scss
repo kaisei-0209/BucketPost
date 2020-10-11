@@ -12,16 +12,19 @@
  *
  */
  // Custom bootstrap variables must be set or imported *before* bootstrap.
-@import "bootstrap/scss/bootstrap";
+
 @import "base";
 
 // Userフォーム画面
 
 
 .user_form {
-  @extend .container-fluid;
-  max-width: 576px;
+  max-width: 764px;
   padding: 2rem;
+}
+
+.button {
+  display: block;
 }
 
 //flashメッセージ
