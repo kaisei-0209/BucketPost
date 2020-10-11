@@ -1,10 +1,14 @@
 <% provide(:title, "Top") %>
 
-<div class="contents mx-auto border border-success">
+
+<section class="contents hero hero-body is-warning is-bold">
   <div class="container">
-    <div class="row">
-      <div class="col-md text-center top-title">
-        エントレって何？
+    <div class="columns">
+      <div class="column has-text-centered">
+        <div class="top-title">Bucket Posts</div>
+        <p>
+          〜死ぬまでにやりたいことをシェアしよう〜
+        </p>
       </div>
     </div>
     <div class="row">
@@ -24,14 +28,11 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success btn-block" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "button is-primary is-light" %>
       </div>
       <div class="col-md-4 offset-md-4">
-        <%= link_to "かんたんログイン", "#", class: "btn btn-primary" %>
+        <%= link_to "かんたんログイン", "#", class: "button is-primary is-light" %>
       </div>
     </div>
 
-  </div>
-
-  <div class="container">
-  </div>
+</section>

@@ -1,5 +1,5 @@
 module ApplicationHelper
-  WEBSITE_NAME = 'エントレ！'
+  WEBSITE_NAME = 'Bucket Posts'
 
   def full_title(page_title = '')
     base_title = WEBSITE_NAME
