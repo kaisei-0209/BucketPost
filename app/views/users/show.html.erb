@@ -1,21 +1,31 @@
 <% provide :title, "マイページ" %>
 
-<div class="container">
-  <div class="row mx-auto" style="max-width: 700px;">
-    <div class="pl-5 col-md-5">
-      <%
-=begin%>
-      画像を表示する
-      <%
-=end%>
-      <% if @user.image? %>
-      <%= image_tag @user.image.url %>
-      <% end %>
-    </div>
-    <div class="d-flex flex-column mt-3 col-md-7">
-      <div class="user-name font-weight-bold pb-2">
-        <%= @user.name %>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered is-mobile">
+      <div class="media-left">
+        <div class="column is-5">
+          <figure class="image is-128x128">
+            <% if @user.image? %>
+            <%= image_tag @user.image.url, class: "is-rounded is-inline user-image" %>
+            <% end %>
+          </figure>
+        </div>
+      </div>
+      <div class="is-inline">
+        <div class="column is-three-quarters">
+          <div class="user-item">
+            <%= @user.name %>
+          </div>
+        </div>
+        <div class="column is-three-quarters">
+          <%= link_to  "プロフィール編集", edit_user_registration_path, class: "button is-dark" %>
+        </div>
+        <div class="column user-profile" style="max-width: 400px; max-height: 140px; overflow: hidden;">
+          <%= @user.profile %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
