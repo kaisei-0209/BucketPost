@@ -3,12 +3,22 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+
+
 require("@rails/ujs").start()
 // require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 // 追加
-// require("bootstrap/dist/js/bootstrap")
+require('jquery')
+window.$ = $;
+
+// fontawesomeの読み込み
+require("@fortawesome/fontawesome-free");
+
+
+
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
