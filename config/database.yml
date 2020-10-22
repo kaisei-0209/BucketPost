@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: entreapps_production
-  username: entreapps
+  username: <%= ENV['ENTREAPPS_DATABASE_USERNAME'] %>
   password: <%= ENV['ENTREAPPS_DATABASE_PASSWORD'] %>

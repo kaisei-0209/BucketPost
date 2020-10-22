@@ -3,27 +3,31 @@
 
 <section class="section">
   <div class="container">
-    <div class="columns is-centered is-mobile">
-      <div class="media-left">
-        <div class="column is-5">
-          <figure class="image is-128x128">
-            <% if @user.image? %>
-            <%= image_tag @user.image.url, class: "is-rounded is-inline user-image" %>
-            <% end %>
-          </figure>
-        </div>
-      </div>
-      <div class="is-inline">
-        <div class="column is-three-quarters">
-          <div class="user-item">
-            <%= @user.name %>
+    <div class="columns is-mobile is-centered">
+      <div class="card-content">
+        <div class="column is-half">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-128x128">
+                <% if @user.image? %>
+                <%= image_tag @user.image.url%>
+                <% else %>
+                <%= image_tag "default.png" %>
+                <% end %>
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="column">
+                <div class="user-item is-family-sans-serif">
+                  <%= @user.name %>
+                  <%= link_to  "プロフィール編集", edit_user_registration_path, class: "button is-dark" %>
+                  <div class="user-profile" style="max-width: 400px; max-height: 140px; overflow: hidden;">
+                    <%= @user.profile %>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="column is-three-quarters">
-          <%= link_to  "プロフィール編集", edit_user_registration_path, class: "button is-dark" %>
-        </div>
-        <div class="column user-profile" style="max-width: 400px; max-height: 140px; overflow: hidden;">
-          <%= @user.profile %>
         </div>
       </div>
     </div>
