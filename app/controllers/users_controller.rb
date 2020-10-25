@@ -13,4 +13,18 @@ class UsersController < ApplicationController
   #   redirect_to(root_url) unless current_user.admin?
   # end
 
+  # フォローしているユーザー一覧
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.following
+    render 'show_follow'
+  end
+
+  # フォローされているユーザー一覧
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
+  end
+
 end

@@ -1,0 +1,2 @@
+$("#follower_count").html("<%= @user.followers.count %>");
+$("#follow_form").html("<%= j(render('/users/unfollow')) %>");

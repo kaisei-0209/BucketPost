@@ -30,6 +30,15 @@
           </div>
         </div>
       </div>
+      <div class="follower">
+        <h5 style="color: black;">フォロワー<span id="follower_count"><%= @user.followers.count %></span>人　</h5>
+      </div>
+      <div class="follow">
+        <h5 style="color: black;">フォロー<span id="following_count"><%= @user.following.count %></span>人　</h5>
+      </div>
+      <div>
+        <%= render "follow_form" %>
+      </div>
     </div>
   </div>
 </section>
