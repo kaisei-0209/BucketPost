@@ -4,32 +4,58 @@
 <section class="section">
   <div class="container">
     <div class="columns is-mobile is-centered">
-      <div class="card-content">
-        <div class="column is-half">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-128x128">
-                <% if @user.image? %>
-                <%= image_tag @user.image.url%>
-                <% else %>
-                <%= image_tag "default.png" %>
-                <% end %>
-              </figure>
-            </div>
-            <div class="media-content">
-              <div class="column">
-                <div class="user-item is-family-sans-serif">
-                  <%= @user.name %>
-                  <%= link_to  "プロフィール編集", edit_user_registration_path, class: "button is-dark" %>
-                  <div class="user-profile" style="max-width: 400px; max-height: 140px; overflow: hidden;">
-                    <%= @user.profile %>
-                  </div>
-                </div>
+      <div class="column is-half">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-128x128">
+              <% if @user.image? %>
+              <%= image_tag @user.image.url%>
+              <% else %>
+              <%= image_tag "default.png" %>
+              <% end %>
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= @user.name %></strong>
+                <br>
+                <%= link_to  "プロフィール編集", edit_user_registration_path, class: "button is-dark" %>
+              <div class="user-profile" style="max-width: 400px; max-height: 140px; overflow: hidden;">
+                <%= @user.profile %>
               </div>
             </div>
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<nav class="level is-mobile">
+  <div class="level-item has-text-centered">
+    <div>
+      <p>投稿</p>
+      <p class="title">3,456</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p>フォロー</p>
+      <p class="title">123</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p>フォロワー</p>
+      <p class="title">456K</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p>いいね</p>
+      <p class="title">789</p>
+    </div>
+  </div>
+</nav>

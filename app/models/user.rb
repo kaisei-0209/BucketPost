@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable
-
         validates :name, presence: true, length: { maximum: 10 }
         VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
         before_validation { email.downcase! }
@@ -30,4 +29,10 @@ class User < ApplicationRecord
           result
         end
         mount_uploader :image, ImageUploader
+        has_many :posts, dependent: :destroy
+
+        #投稿一覧などのユーザーに紐づく投稿を複数取得する
+        def posts
+          return Post.where(user_id: self.id)
+        end
 end
