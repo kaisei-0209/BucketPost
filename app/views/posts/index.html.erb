@@ -1,0 +1,37 @@
+<% if user_signed_in? %>
+<% @posts.each do |post| %>
+<article class="media">
+  <figure class="media-left image is-128x128">
+    <% if post.user.image? %>
+    <%= link_to image_tag(post.user.image.to_s, alt: "image"), post.user %>
+    <% else %>
+    <%= link_to image_tag("default.png", alt: "image"), post.user %>
+    <% end %>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><%= link_to post.user.name, post.user %></strong> <small><%= post.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
+        <br>
+        <%= post.content %>
+      </p>
+    </div>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-comment fa-fw"></i></span>
+        </a>
+        <a class="level-item">
+          <span class="icon is-small"><i class="fas fa-heart"></i></span>
+        </a>
+      </div>
+    </nav>
+  </div>
+  <%= link_to post, method: :delete, data: { confirm: "削除しますか？" } do %>
+  <div class="media-right">
+    <button class="delete"></button>
+  </div>
+  <% end %>
+</article>
+<% end %>
+<% end %>

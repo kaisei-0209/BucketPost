@@ -14,6 +14,8 @@ end
       get :following, :followers
     end
   end
+  resources :users, only: [:show]
+  resources :posts, only: [:index, :show, :new, :create, :destroy]
   root 'static_pages#top'
   resources :relationships, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
