@@ -14,6 +14,7 @@ module Entreapps
     config.i18n.default_locale = :ja
     #タイムゾーンを日本語に変更
     config.time_zone = 'Asia/Tokyo'
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
 
 
     # Settings in config/environments/* take precedence over those specified here.

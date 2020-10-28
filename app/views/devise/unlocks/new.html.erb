@@ -1,16 +1,16 @@
-<h2>Resend unlock instructions</h2>
+<%= provide :title, "新規ユーザー登録" %>
+<%= devise_error_messages %>
 
-<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+<div class="container is-mobile user-form">
+  <h2 class="form_title has-text-centered">新規登録</h2>
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <%= f.label :name, "ユーザー名" %><br />
+      <div class="control has-icons-left has-icons-right">
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "input" %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+      </div>
+    </div>
