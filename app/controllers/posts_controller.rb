@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new,create, destroy]
+  before_action :authenticate_user!, only: %i[new create destroy]
+  before_action :ensure_current_user, only: %i[edit update]
   before_action :correct_user, only: :destroy
 
   def index
@@ -16,7 +17,25 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿しました"
       redirect_to posts_url
     else
-      render "posts/new"
+      render :new
+    end
+  end
+
+  def show
+    @post = Post.find_by(id: params[:id])
+  end
+
+  def edit
+    @post = Post.find_by(id: params[:id])
+  end
+
+  def update
+    @post = Post.find_by(id: params[:id])
+    if @post.update(post_params)
+      flash[:notice] = "投稿を編集しました"
+      redirect_to posts_path
+    else
+      render :edit
     end
   end
 
@@ -26,19 +45,17 @@ class PostsController < ApplicationController
     redirect_to posts_url
   end
 
-  def show
-    @post = Post.find_by(id: params[:id])
-  end
-
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :title)
   end
 
-  def correct_user
-    @post = current_user.posts.find_by(id: params[:id])
-    redirect_to root_url if @post.nil?
+  def ensure_current_user
+    post = Post.find(params[:id])
+    if post.user_id != current_user.id
+      redirect_to action: :index
+    end
   end
 
 end

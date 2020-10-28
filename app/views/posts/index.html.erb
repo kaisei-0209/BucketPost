@@ -10,11 +10,13 @@
   </figure>
   <div class="media-content">
     <div class="content">
-      <p>
-        <strong><%= link_to post.user.name, post.user %></strong> <small><%= post.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
+      <strong><%= link_to post.user.name, post.user %></strong> <small><%= post.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
+      <div class="has-text-info is-inline is-size-7">
         <br>
-        <%= post.content %>
-      </p>
+        <%= post.title %>
+      </div>
+      <br>
+      <%= link_to post.content, post_path(post) %>
     </div>
     <nav class="level is-mobile">
       <div class="level-left">
@@ -27,10 +29,12 @@
       </div>
     </nav>
   </div>
+  <% if post.user == current_user %>
   <%= link_to post, method: :delete, data: { confirm: "削除しますか？" } do %>
   <div class="media-right">
     <button class="delete"></button>
   </div>
+  <% end %>
   <% end %>
 </article>
 <% end %>

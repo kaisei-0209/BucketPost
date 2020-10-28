@@ -1,7 +1,7 @@
-<%= provide :title, "投稿画面" %>
+<%= provide :title, "投稿編集ベージ" %>
 
 <div class="container is-mobile user-form">
-  <h2 class="form_title has-text-centered">投稿ページ</h2>
+  <h2 class="form_title has-text-centered">投稿編集ページ</h2>
   <%= form_with(model: @post, local: true) do |f| %>
   <div class="columns">
     <div class="column is-half is-offset-one-quarter has-text-centered">
@@ -15,7 +15,6 @@
 
   <div class="columns">
     <div class="column is-half is-offset-one-quarter">
-      <%= render "users/shared/error_messages", model: f.object %>
       <%= f.label :title, "タイトル" %><br />
       <div class="control">
         <%= f.text_field :title, class: "input" %>
@@ -34,7 +33,7 @@
 </div>
 <div class="columns">
   <div class="column is-half is-offset-one-quarter">
-    <%= f.submit "投稿", class: "button is-link is-fullwidth" %>
+    <%= f.submit "変更を保存", class: "button is-link is-fullwidth" %>
   </div>
 </div>
 <div class="columns">

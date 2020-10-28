@@ -1,5 +1,9 @@
 ja:
   activerecord:
+    attributes:
+      post:
+        title: タイトル
+        content: やりたいこと
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
