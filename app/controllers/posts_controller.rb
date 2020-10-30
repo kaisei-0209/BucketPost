@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create destroy]
-  before_action :ensure_current_user, only: %i[edit update]
-  before_action :correct_user, only: :destroy
+  before_action :ensure_current_user, only: %i[edit update destroy]
 
   def index
     @posts = Post.all
@@ -40,6 +39,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find_by(id: params[:id])
     @post.destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to posts_url
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :title)
+    params.require(:post).permit(:content, :title, :image, :remove_image)
   end
 
   def ensure_current_user

@@ -16,7 +16,10 @@
         <%= post.title %>
       </div>
       <br>
-      <%= link_to post.content, post_path(post) %>
+      <div class="post_content">
+        <p><%= link_to post.content, post_path(post) %></p>
+        <%= image_tag post.image.url if post.image.present? %>
+      </div>
     </div>
     <nav class="level is-mobile">
       <div class="level-left">

@@ -21,24 +21,36 @@
       </div>
     </div>
   </div>
-</div>
-<!--アカウント編集時にプロフィールを入力できるようにフォームを追加-->
-<div class="columns">
-  <div class="column is-half is-offset-one-quarter">
-    <%= f.label :content, "やりたいことを投稿してください", class: "is-italic" %><br />
-    <div class="control">
-      <%= f.text_area :content, class: "input textarea is-primary", placeholder: "今年はスカイダイビングをして一つのやりたいことを実現します！" %>
+  <!--投稿編集-->
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <%= f.label :content, "やりたいことを投稿してください", class: "is-italic" %><br />
+      <div class="control">
+        <%= f.text_area :content, class: "input textarea is-primary", placeholder: "今年はスカイダイビングをして一つのやりたいことを実現します！" %>
+      </div>
     </div>
   </div>
-</div>
-<div class="columns">
-  <div class="column is-half is-offset-one-quarter">
-    <%= f.submit "変更を保存", class: "button is-link is-fullwidth" %>
+
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter has-text-centered">
+      <div class="post_edit_image">
+        <% if @post.image.present? %>
+        <%= image_tag @post.image.url %>
+        <p><%= f.check_box :remove_image %>画像を削除する</p>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
-<div class="columns">
-  <div class="column is-half is-offset-one-quarter">
-    <%= link_to "キャンセル", user_path(current_user), class: "button is-light is-fullwidth" %>
+
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <%= f.submit "変更を保存", class: "button is-link is-fullwidth" %>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <%= link_to "キャンセル", user_path(current_user), class: "button is-light is-fullwidth" %>
+    </div>
   </div>
 </div>
 <% end %>
