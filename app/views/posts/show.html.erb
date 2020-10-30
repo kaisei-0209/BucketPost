@@ -58,9 +58,14 @@
                 <%= @post.title %>
               </div>
               <br>
-              <p>
-                <%= @post.content %>
-              </p>
+              <div class="post_content">
+                <p>
+                  <%= @post.content %>
+                </p>
+                <!--画像表示-->
+                <%= image_tag @post.image.url if @post.image.present? %>
+              </div>
+
               <nav class="level is-mobile">
                 <div class="level-left">
                   <a class="level-item">

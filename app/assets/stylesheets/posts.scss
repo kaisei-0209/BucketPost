@@ -6,3 +6,39 @@
   text-decoration: none;
   color: #666;
 }
+
+/*投稿詳細画面*/
+.post_show {
+  width: 85vw;
+}
+
+.user_show_profile {
+  margin-bottom: 15px;
+}
+
+.post_link {
+  margin-bottom: 15px;
+}
+
+/*投稿画面*/
+.image input {
+  display: none;
+}
+
+
+.image label {
+  cursor: pointer;
+}
+
+/*投稿した画像のサイズ*/
+.post_content img {
+  margin-left: 30px;
+  border-radius: 35px;
+  width: 150px;
+}
+
+.post_edit_image img {
+  border-radius: 35px;
+  width: 300px;
+}
+

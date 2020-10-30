@@ -9,17 +9,10 @@ body {
   min-height: 100vh;
 }
 
-
-
-
-
 /* main */
 main {
   flex: 1;
 }
-
-
-
 
 // userフォーム
 .form_title {
@@ -89,14 +82,12 @@ main {
 }
 
 
-
 /*設定画面ユーザー画像*/
 img {
   border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
   width:  180px;       /* ※縦横を同値に */
   height: 180px;       /* ※縦横を同値に */
 }
-
 
 
   .prev-img {
@@ -112,18 +103,7 @@ a {
   color: black;
 }
 
-/*投稿詳細画面*/
-.post_show {
-  width: 85vw;
-}
 
-.user_show_profile {
-  margin-bottom: 15px;
-}
-
-.post_link {
-  margin-bottom: 15px;
-}
 
 
 
