@@ -78,4 +78,4 @@ gem 'carrierwave'
 #画像の大きさを設定する
 gem 'rmagick'
 
-
+gem 'font-awesome-sass'

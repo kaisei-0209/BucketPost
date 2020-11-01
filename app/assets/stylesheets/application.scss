@@ -12,11 +12,8 @@
  *
  */
  // Custom bootstrap variables must be set or imported *before* bootstrap.
-$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
-@import '@fortawesome/fontawesome-free/scss/fontawesome';
-@import '@fortawesome/fontawesome-free/scss/regular';
-@import '@fortawesome/fontawesome-free/scss/solid';
-@import '@fortawesome/fontawesome-free/scss/brands';
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "base";
 @import "posts";
 // Userフォーム画面
@@ -34,10 +31,10 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 //flashメッセージ
 .notice {
   color: white;
-	background: #0066FF;
+  background-color: blue;
 }
 .alert {
   color: white;
-	background-color: #CC3333	;
+  background-color: red;
 }
 

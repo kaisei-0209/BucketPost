@@ -24,3 +24,12 @@ module ApplicationHelper
     html.html_safe
   end
 end
+
+def header_link_item(name, path)
+  class_name = 'navber-item'
+  class_name << ' active' if current_page?(path)
+
+  content_tag :li, class: class_name do
+    link_to name, path, class: 'navber-link'
+  end
+end

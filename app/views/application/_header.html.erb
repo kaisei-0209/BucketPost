@@ -14,22 +14,22 @@
   <div class="navbar-menu" id="navMenu">
     <div class="navbar-start">
       <% if user_signed_in? %>
-      <%= link_to  "投稿一覧", posts_path, class: 'navbar-item' %>
-      <%= link_to  "新規投稿", new_post_path, class: 'navbar-item' %>
+      <%= link_to  icon('fas', 'th','投稿一覧'), posts_path, class: "navbar-item" %>
+      <%= link_to  icon('fa', 'edit', '新規投稿'), new_post_path, class: 'navbar-item' %>
+      <%= link_to  icon('fa', 'heart','人気投稿'), "#", class: "navbar-item" %>
       <% else %>
-      <%= link_to  "人気投稿", "#", class: "navbar-item" %>
-      <%= link_to  "ログイン", new_user_session_path, class: "navbar-item" %>
-      <%= link_to  "新規登録", new_user_registration_path, class: "navbar-item" %>
+      <%= link_to  icon('fas','sign-in-alt', 'ログイン'), new_user_session_path, class: "navbar-item" %>
+      <%= link_to icon('fas','user-plus', '新規登録'), new_user_registration_path, class: "navbar-item" %>
       <% end %>
       <div class="navbar-item has-dropdown is-hoverable">
         <% if user_signed_in? %>
         <a class="navbar-link">
-          <%= current_user.name %>
+          <%= icon('fa', 'user', current_user.name) %>
         </a>
         <div class="navbar-dropdown">
           <%= link_to  "マイページ", user_path(current_user), class: "navbar-item" %>
           <%= link_to  "プロフィール編集", edit_user_registration_path, class: "navbar-item" %>
-          <%= link_to  "ログアウト", sign_out_path, class: "navbar-item" %>
+          <%= link_to  "ログアウト", sign_out_path, class: 'navbar-item' %>
           </span>
           <% end %>
         </div>
@@ -39,20 +39,20 @@
 </nav>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() { //①
+  document.addEventListener('DOMContentLoaded', function() {
 
-    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0); //②
+    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
     if ($navbarBurgers.length > 0) {
 
       $navbarBurgers.forEach(function($el) {
-        $el.addEventListener('click', function() { //③
+        $el.addEventListener('click', function() {
 
-          var target = $el.dataset.target; //④
-          var $target = document.getElementById(target); //④
+          var target = $el.dataset.target;
+          var $target = document.getElementById(target);
 
-          $el.classList.toggle('is-active'); //⑤
-          $target.classList.toggle('is-active'); //⑤
+          $el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
 
         });
       });

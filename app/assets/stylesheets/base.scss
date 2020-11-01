@@ -14,6 +14,12 @@ main {
   flex: 1;
 }
 
+/*header*/
+
+.header_link {
+  color: initial;
+}
+
 // userフォーム
 .form_title {
   margin-top: 30px;
@@ -103,6 +109,14 @@ a {
   color: black;
 }
 
+.awesome::before{
+  font-family: "Font Awesome 5 Free";
+  content: '\f017';
+  font-size: 15px;
+  font-weight: 400;
+  margin-right: 4px;
+  color:#f90;
+}
 
 
 
