@@ -2,8 +2,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create destroy]
   before_action :ensure_current_user, only: %i[edit update destroy]
 
+  PER = 3
+
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(PER)
   end
 
   def new
