@@ -57,8 +57,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-#Bootstrapを追加
-gem 'bootstrap', '~> 4.5.2'
+#jQueryを追加
 gem 'jquery-rails'
 
 #ログイン機能追加
@@ -78,4 +77,8 @@ gem 'carrierwave'
 #画像の大きさを設定する
 gem 'rmagick'
 
+#iconを使うために追加
 gem 'font-awesome-sass'
+
+#ページネーション機能を追加
+gem 'kaminari'
