@@ -3,8 +3,8 @@
 
 <section class="section">
   <div class="container">
-    <div class="columns is-mobile is-centered">
-      <div class="column is-half">
+    <div class="columns is-mobile">
+      <div class="column is-offset-one-third">
         <div class="media">
           <div class="media-left">
             <figure class="image is-128x128">
@@ -17,54 +17,38 @@
           </div>
           <div class="media-content">
             <div class="content">
-              <p>
-                <strong><%= @user.name %></strong>
-                <br>
-                <%= link_to  "プロフィール編集", edit_user_registration_path, class: "button is-dark" %>
+              <strong><%= @user.name %></strong>
+              <br>
+              <% if current_user.id == @user.id %>
+              <%= link_to  "プロフィール編集", edit_user_registration_path, class: "button is-dark" %>
+              <% else %>
+              <%= render "follow_form" %>
+              <% end %>
               <div class="user-profile" style="max-width: 400px; max-height: 140px; overflow: hidden;">
                 <%= @user.profile %>
               </div>
             </div>
-            </p>
           </div>
         </div>
-      </div>
-      <div class="follower">
-        <h5 style="color: black;">フォロワー<span id="follower_count"><%= @user.followers.count %></span>人　</h5>
-      </div>
-      <div class="follow">
-        <h5 style="color: black;">フォロー<span id="following_count"><%= @user.following.count %></span>人　</h5>
-      </div>
-      <div>
-        <%= render "follow_form" %>
       </div>
     </div>
   </div>
 </section>
 
-<nav class="level is-mobile">
-  <div class="level-item has-text-centered">
-    <div>
-      <p>投稿</p>
-      <p class="title">3,456</p>
+<section class="level">
+  <div class="level-left"></div>
+  <div class="level-right">
+    <div class="level-item tabs">
+      <ul>
+        <li class="is-active"><a>投稿</a></li>
+        <li><a>フォロー<span id="following_count"><%= @user.following.count %></span>人</a></li>
+        <li><a>フォロワー<span id="follower_count"><%= @user.followers.count %></span>人</a></li>
+        <li><a>いいね</a></li>
+      </ul>
     </div>
   </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <p>フォロー</p>
-      <p class="title">123</p>
+  <div class="level-right">
+    <div class="level-item">
     </div>
   </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <p>フォロワー</p>
-      <p class="title">456K</p>
-    </div>
-  </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <p>いいね</p>
-      <p class="title">789</p>
-    </div>
-  </div>
-</nav>
+</section>

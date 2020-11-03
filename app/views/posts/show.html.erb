@@ -14,8 +14,8 @@
             <%= @post.user.name %>さん
           </p>
           <ul class="menu-list">
-            <li><a href="#">5フォロー</a></li>
-            <li><a href="#">3フォロワー</small></a></li>
+            <li>フォロー<span id="following_count"><%= @post.user.following.count %></span>人</li>
+            <li>フォロワー<span id="follower_count"><%= @post.user.followers.count %></span>人</li>
           </ul>
           <p class="menu-label">
             プロフィール
