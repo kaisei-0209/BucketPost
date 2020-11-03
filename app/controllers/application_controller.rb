@@ -15,3 +15,5 @@ end
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image, :profile])
   end
 end
+
+
