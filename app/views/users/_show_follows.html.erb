@@ -1,0 +1,26 @@
+<div class="is-mobile has-text-centered">
+  <% objects.each do |user| %>
+  <div class="column is-4 is-offset-one-third">
+    <div class="card">
+      <% if user.image? %>
+      <%= link_to image_tag(user.image.to_s, alt: "image"), user %>
+      <% else %>
+      <%= link_to image_tag("default.png", alt: "image"), user %>
+      <% end %>
+      <p class="menu-label">
+        <%= user.name %>さん
+      </p>
+      <ul class="menu-list">
+        <li>フォロー<span id="following_count"><%= user.following.count %></span>人</li>
+        <li>フォロワー<span id="follower_count"><%= user.followers.count %></span>人</li>
+      </ul>
+      <p class="menu-label">
+        プロフィール
+      </p>
+      <p class="user_show_profile">
+        <%= user.profile %>
+      </p>
+    </div>
+  </div>
+  <% end %>
+</div>

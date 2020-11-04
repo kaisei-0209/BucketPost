@@ -57,6 +57,14 @@ main {
   display: inline;
 }
 
+//タブの切り替え
+.tabContents {
+  display: none;
+}
+.tabContents.is-active {
+  display: block;
+}
+
 
 /*ユーザー画像*/
 .prof-img {
@@ -119,7 +127,12 @@ a {
   color:#f90;
 }
 
-
+.no-contents {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 1.5rem;
+  width: 100%;
+  margin-top: 80px;
+  }
 
 
 

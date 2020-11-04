@@ -35,20 +35,53 @@
   </div>
 </section>
 
-<section class="level">
-  <div class="level-left"></div>
-  <div class="level-right">
-    <div class="level-item tabs">
-      <ul>
-        <li class="is-active"><a>投稿</a></li>
-        <li><a>フォロー<span id="following_count"><%= @user.following.count %></span>人</a></li>
-        <li><a>フォロワー<span id="follower_count"><%= @user.followers.count %></span>人</a></li>
-        <li><a>いいね</a></li>
-      </ul>
-    </div>
+
+<div class="tabs is-centered">
+  <ul class="tab">
+    <li class="is-active"><a href="#tab1">投稿</a></li>
+    <li><a href="#tab2">フォロー<span id="following_count"><%= @user.following.count %></span>人</a></li>
+    <li><a href="#tab3">フォロワー<span id="follower_count"><%= @user.followers.count %></span>人</a></li>
+    <li><a href="#tab4">いいね</a></li>
+  </ul>
+</div>
+
+<div class="tabContents is-active" id="tab1">
+  ～コンテンツ内容～1
+</div>
+
+<div class="tabContents" id="tab2">
+  <% if @user.following.any? %>
+  <%= render 'show_follows', objects: @followings %>
+  <% else %>
+  <div class="no-contents  justify-content has-text-centered">
+    誰もフォローしていません
   </div>
-  <div class="level-right">
-    <div class="level-item">
-    </div>
+  <% end %>
+</div>
+
+<div class="tabContents" id="tab3">
+  <% if @user.followers.any? %>
+  <%= render 'show_follows', objects: @followers %>
+  <% else %>
+  <div class="no-contents  justify-content has-text-centered">
+    誰もフォローしていません
   </div>
-</section>
+  <% end %>
+</div>
+<div class="tabContents" id="tab4">
+  ～コンテンツ内容～4
+</div>
+
+
+
+<!--タブの切り替え-->
+<script>
+  $(function() {
+    $(".tab a").click(function() {
+      $(this).parent().addClass("is-active").siblings(".is-active").removeClass("is-active");
+      var tabContents = $(this).attr("href");
+      $(tabContents).addClass("is-active").siblings(".is-active").removeClass("is-active");
+      return false;
+    });
+  });
+</script>
