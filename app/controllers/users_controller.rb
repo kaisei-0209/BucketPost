@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[index destroy]
   # before_action :admin_user,     only: :destroy
 
   def index
@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+    @followings = @user.following
+    @followers = @user.followers
   end
 
   # private
