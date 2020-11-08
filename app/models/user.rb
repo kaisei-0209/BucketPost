@@ -50,7 +50,7 @@ class User < ApplicationRecord
         end
         mount_uploader :image, ImageUploader
         has_many :posts, dependent: :destroy
-
+        has_many :comments, dependent: :destroy
         #投稿一覧などのユーザーに紐づく投稿を複数取得する
         def posts
           return Post.where(user_id: self.id)

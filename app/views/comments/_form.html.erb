@@ -1,0 +1,24 @@
+<div class="columns">
+  <div class="column is-offset-4 is-7">
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-128x128">
+          <% if current_user.image.present? %>
+          <%= image_tag current_user.image.url %>
+          <% else %>
+          <%= image_tag "default.png" %>
+          <% end %>
+        </p>
+      </figure>
+      <div class="media-content">
+        <%= form_with(model: [@post, @comment], local: true) do |f| %>
+        <%= render "users/shared/error_messages", model: f.object %>
+        <p class="control">
+          <%= f.text_area :content, class: 'input textarea' %>
+        </p>
+        <%= f.submit 'コメントを送信', class: 'button is-primary' %>
+        <% end %>
+      </div>
+    </article>
+  </div>
+</div>

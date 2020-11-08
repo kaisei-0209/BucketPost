@@ -12,6 +12,14 @@
   width: 85vw;
 }
 
+.flex-item1 {
+  flex-basis: 100%;
+}
+
+.flex-item2 {
+  flex-basis: 100%;
+}
+
 .user_show_profile {
   margin-bottom: 15px;
 }
@@ -21,6 +29,7 @@
 }
 
 /*投稿画面*/
+
 .image input {
   display: none;
 }
