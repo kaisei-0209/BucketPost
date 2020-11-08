@@ -23,7 +23,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(id: params[:id])
+    @post = Post.includes(:user).find(params[:id])
+    @comments = @post.comments.includes(:user).all
+    @comment  = @post.comments.build(user_id: current_user.id) if current_user
   end
 
   def edit

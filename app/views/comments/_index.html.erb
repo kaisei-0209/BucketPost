@@ -1,0 +1,29 @@
+<% @comments.each do |c| %>
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <% if c.user.image.present? %>
+      <%= link_to image_tag(c.user.image.url, alt: "image"), c.user %>
+      <% else %>
+      <%= image_tag "default.png" %>
+      <% end %>
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p><strong><%= c.user.name %></strong>
+        <br>
+        <%= c.content %>
+      </p>
+      <small><%= c.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
+    </div>
+  </div>
+  <% if c.user == current_user %>
+  <%= link_to post_comment_path(@post, c), method: :delete, data: { confirm: "削除しますか？" }  do %>
+  <div class="media-right">
+    <button class="delete"></button>
+  </div>
+  <% end %>
+  <% end %>
+</article>
+<% end %>
