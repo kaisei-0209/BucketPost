@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create destroy]
+  before_action :authenticate_user!, only: %i[new show create destroy]
   before_action :ensure_current_user, only: %i[edit update destroy]
 
   PER = 3
@@ -26,6 +26,7 @@ class PostsController < ApplicationController
     @post = Post.includes(:user).find(params[:id])
     @comments = @post.comments.includes(:user).all
     @comment  = @post.comments.build(user_id: current_user.id) if current_user
+    @like = Like.new
   end
 
   def edit

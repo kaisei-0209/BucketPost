@@ -1,0 +1,9 @@
+<% if current_user.already_liked?(post) %>
+<%= link_to post_like_path(post_id: post.id, id: post.likes[0].id), method: :delete, remote: true do %>
+<i class="fas fa-heart unlike-btn level-item"></i>
+<% end %>
+<% else %>
+<%= link_to post_likes_path(post.id), method: :post, remote: true do %>
+<i class="far fa-heart like-btn level-item"></i>
+<% end %>
+<% end %>
