@@ -15,10 +15,11 @@ end
     end
   end
   resources :users, only: [:show]
-  resources :posts, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+  resources :posts do
     resources :comments, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
   end
-  root 'static_pages#top'
+  root 'posts#index'
   resources :relationships, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

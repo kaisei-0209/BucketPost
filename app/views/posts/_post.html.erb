@@ -3,33 +3,33 @@
     <div class="columns">
       <div class="column is-4 has-text-centered is-flex">
         <aside class="box menu flex-item1">
-          <% if @post.user.image? %>
-          <%= link_to image_tag(@post.user.image.to_s, alt: "image"), @post.user %>
+          <% if post.user.image? %>
+          <%= link_to image_tag(post.user.image.to_s, alt: "image"), post.user %>
           <% else %>
-          <%= link_to image_tag("default.png", alt: "image"), @post.user %>
+          <%= link_to image_tag("default.png", alt: "image"), post.user %>
           <% end %>
           <p class="menu-label">
-            <%= @post.user.name %>さん
+            <%= post.user.name %>さん
           </p>
           <ul class="menu-list">
-            <li>フォロー<span id="following_count"><%= @post.user.following.count %></span>人</li>
-            <li>フォロワー<span id="follower_count"><%= @post.user.followers.count %></span>人</li>
+            <li>フォロー<span id="following_count"><%= post.user.following.count %></span>人</li>
+            <li>フォロワー<span id="follower_count"><%= post.user.followers.count %></span>人</li>
           </ul>
           <p class="menu-label">
             プロフィール
           </p>
           <p class="user_show_profile">
-            <%= @post.user.profile %>
+            <%= post.user.profile %>
           </p>
-          <% if @post.user == current_user %>
+          <% if post.user == current_user %>
           <div class="post_link">
-            <%= link_to edit_post_path(@post), class: "button is-warning is-hovered" do %>
+            <%= link_to edit_post_path(post), class: "button is-warning is-hovered" do %>
             <i class="fa fa-edit"></i>
             <span>投稿を編集する</span>
             <% end %>
           </div>
           <div class="post_link">
-            <%= link_to @post, method: :delete, data: { confirm: "削除しますか？" }, class: "button is-warning is-hovered" do %>
+            <%= link_to post, method: :delete, data: { confirm: "削除しますか？" }, class: "button is-warning is-hovered" do %>
             <i class="fa fa-trash"></i>
             <span>投稿を削除する</span>
             <% end %>
@@ -41,36 +41,37 @@
         <article class="box media flex-item2">
           <figure class="media-left">
             <p class="image is-64x64">
-              <% if @post.user.image? %>
-              <%= link_to image_tag(@post.user.image.to_s, alt: "image"), @post.user %>
+              <% if post.user.image? %>
+              <%= link_to image_tag(post.user.image.to_s, alt: "image"), post.user %>
               <% else %>
-              <%= link_to image_tag("default.png", alt: "image"), @post.user %>
+              <%= link_to image_tag("default.png", alt: "image"), post.user %>
               <% end %>
             </p>
           </figure>
           <div class="media-content">
             <div class="content">
-              <strong><%= link_to @post.user.name, @post.user %></strong> <small><%= @post.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
+              <strong><%= link_to post.user.name, post.user %></strong> <small><%= post.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
               <div class="has-text-info is-inline is-size-7">
                 <br>
-                <%= @post.title %>
+                <%= post.title %>
               </div>
               <br>
               <div class="post_content">
                 <p>
-                  <%= @post.content %>
+                  <%= post.content %>
                 </p>
                 <!--画像表示-->
-                <%= image_tag @post.image.url if @post.image.present? %>
+                <%= image_tag post.image.url if post.image.present? %>
               </div>
               <nav class="level is-mobile">
                 <div class="level-left">
                   <a class="level-item">
                     <span class="icon is-small"><i class="fas fa-comment fa-fw"></i></span>
                   </a>
-                  <a class="level-item">
-                    <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                  </a>
+                  <div id="like">
+                    <%= render partial: '/likes/like_area', locals: {post: post} %>
+                  </div>
+                  <span id="likes_count"><%= post.likes.count %></span>
                 </div>
               </nav>
             </div>

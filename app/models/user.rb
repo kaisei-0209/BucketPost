@@ -35,6 +35,11 @@ class User < ApplicationRecord
     following_relationships.find_by(following_id: user.id).destroy
   end
 
+  #userがいいねしているかどうかの判定
+  def already_liked?(post)
+    self.likes.exists?(post_id: post.id)
+  end
+
         #passowordなしでアップデートする
         def update_without_current_password(params, *options)
           params.delete(:current_password)
@@ -50,6 +55,8 @@ class User < ApplicationRecord
         end
         mount_uploader :image, ImageUploader
         has_many :posts, dependent: :destroy
+        has_many :likes, dependent: :destroy
+        has_many :liked_posts, through: :likes, source: :post
         has_many :comments, dependent: :destroy
         #投稿一覧などのユーザーに紐づく投稿を複数取得する
         def posts
