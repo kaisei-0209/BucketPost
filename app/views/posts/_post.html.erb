@@ -68,10 +68,7 @@
                   <a class="level-item">
                     <span class="icon is-small"><i class="fas fa-comment fa-fw"></i></span>
                   </a>
-                  <div id="like">
-                    <%= render partial: '/likes/like_area', locals: {post: post} %>
-                  </div>
-                  <span id="likes_count"><%= post.likes.count %></span>
+                  <%= render partial: '/likes/like_area', locals: {post: post} %>
                 </div>
               </nav>
             </div>
