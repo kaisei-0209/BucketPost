@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @posts = @user.posts
     @followings = @user.following
     @followers = @user.followers
+    @liked_posts = @user.liked_posts
   end
 
   def destroy
