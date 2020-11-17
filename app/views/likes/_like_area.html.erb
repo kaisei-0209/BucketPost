@@ -1,5 +1,5 @@
 <div id="like_<%= post.id %>">
-  <% if current_user.already_liked?(post) %>
+  <% if current_user && current_user.already_liked?(post) %>
   <%= link_to post_like_path(post_id: post.id, id: post.id), method: :delete, remote: true do %>
   <i class="fas fa-heart unlike-btn"></i><%= post.likes.count %>
   <% end %>
