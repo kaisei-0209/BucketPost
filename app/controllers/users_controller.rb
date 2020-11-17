@@ -13,6 +13,13 @@ class UsersController < ApplicationController
     @followers = @user.followers
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "ユーザー「#{@user.name}」を削除しました"
+    redirect_to users_url
+  end
+
   private
   # 管理者かどうか確認
   def admin_user

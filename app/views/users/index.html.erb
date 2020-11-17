@@ -1,0 +1,37 @@
+<% provide :title, "ユーザー一覧ページ" %>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <div class="columns is-multiline">
+      <% @users.each do |user| %>
+      <div class="column is-4">
+        <div class="card">
+          <% if current_user.admin? && !(current_user == user) %>
+          <%= link_to "アカウント削除", user_path(user) , data: { confirm: "本当に削除しますか？" }, method: :delete, class: 'button is-danger is-light is-block' %>
+          <% elsif %>
+          <h1 class="has-background-light is-size-4">管理者</h1>
+          <% end %>
+          <% if user.image? %>
+          <%= link_to image_tag(user.image.to_s, alt: "image"), user %>
+          <% else %>
+          <%= link_to image_tag("default.png", alt: "image"), user %>
+          <% end %>
+          <p class="menu-label">
+            <%= user.name %>さん
+          </p>
+          <ul class="menu-list">
+            <li>フォロー<span id="following_count"><%= user.following.count %></span>人</li>
+            <li>フォロワー<span id="follower_count"><%= user.followers.count %></span>人</li>
+          </ul>
+          <p class="menu-label">
+            プロフィール
+          </p>
+          <p class="user_show_profile">
+            <%= user.profile %>
+          </p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>
