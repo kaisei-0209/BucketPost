@@ -29,12 +29,5 @@
       </div>
     </nav>
   </div>
-  <% if post.user == current_user || current_user.admin? %>
-  <%= link_to post, method: :delete, data: { confirm: "削除しますか？" } do %>
-  <div class="media-right">
-    <button class="delete"></button>
-  </div>
-  <% end %>
-  <% end %>
 </article>
 <% end %>
