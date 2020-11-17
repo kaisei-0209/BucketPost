@@ -1,10 +1,10 @@
 <%= provide :title, "投稿編集ベージ" %>
 
-<div class="container is-mobile user-form">
+<div class="container user-form">
   <h2 class="form_title has-text-centered">投稿編集ページ</h2>
   <%= form_with(model: @post, local: true) do |f| %>
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter has-text-centered">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth has-text-centered">
       <% if current_user.image.present? %>
       <%= image_tag current_user.image.url %>
       <% else %>
@@ -13,8 +13,8 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= f.label :title, "タイトル" %><br />
       <div class="control">
         <%= f.text_field :title, class: "input" %>
@@ -22,8 +22,8 @@
     </div>
   </div>
   <!--投稿編集-->
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= f.label :content, "やりたいことを投稿してください", class: "is-italic" %><br />
       <div class="control">
         <%= f.text_area :content, class: "input textarea is-primary", placeholder: "今年はスカイダイビングをして一つのやりたいことを実現します！" %>
@@ -31,8 +31,8 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter has-text-centered">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth has-text-centered">
       <div class="post_edit_image">
         <% if @post.image.present? %>
         <%= image_tag @post.image.url %>
@@ -42,13 +42,13 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-      <%= f.submit "変更を保存", class: "button is-link is-fullwidth" %>
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
+      <%= f.submit "変更を保存", class: "button  is-link is-outlined is-fullwidth" %>
     </div>
   </div>
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= link_to "キャンセル", user_path(current_user), class: "button is-light is-fullwidth" %>
     </div>
   </div>

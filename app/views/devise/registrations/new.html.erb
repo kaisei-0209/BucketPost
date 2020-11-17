@@ -1,10 +1,10 @@
 <%= provide :title, "新規ユーザー登録" %>
 <%= devise_error_messages %>
 
-<div class="container is-mobile user-form">
+<div class="container user-form">
   <h2 class="form_title has-text-centered">新規登録</h2>
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
       <%= f.label :name, "ユーザー名" %><br />
       <div class="control has-icons-left has-icons-right">
@@ -16,8 +16,8 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= f.label :email, "メールアドレス" %><br />
       <div class="control has-icons-left has-icons-right">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
@@ -28,8 +28,8 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= f.label :password %><br />
       <div class="control has-icons-left">
         <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
@@ -39,8 +39,8 @@
       </div>
     </div>
   </div>
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= f.label :password_confirmation %><br />
       <div class="control has-icons-left">
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
@@ -52,16 +52,16 @@
   </div>
 
 
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-      <%= f.submit "新規登録", class: "button is-link is-fullwidth" %>
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
+      <%= f.submit "新規登録", class: "button is-link is-outlined is-fullwidth" %>
     </div>
   </div>
 
   <% end %>
 
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= render "devise/shared/links" %>
     </div>
   </div>

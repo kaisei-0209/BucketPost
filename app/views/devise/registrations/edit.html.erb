@@ -3,11 +3,11 @@
 
 
 
-<div class="container is-mobile user-form">
+<div class="container user-form">
   <h2 class="form_title has-text-centered">ユーザー編集ページ</h2>
   <%= form_with model: @user, url: user_registration_path, id: 'edit_user', class: 'edit_user', local: true do |f| %>
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter has-text-centered">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth has-text-centered">
       <%= f.label :image, class: "image_label" do %>
       <% if @user.image.present? %>
       <%= image_tag @user.image.url, id: :img_prev %>
@@ -21,8 +21,8 @@
       <!--アカウント編集時に画像を入力できるようにフォームを追加-->
     </div>
   </div>
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <!--アカウント編集時に名前を入力できるようにフォームを追加-->
       <%= f.label :name, "ユーザー名(10文字以内)" %><br />
       <div class="control has-icons-left has-icons-right">
@@ -34,8 +34,8 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= f.label :email, "メールアドレス" %><br />
       <div class="control has-icons-left has-icons-right">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
@@ -46,34 +46,34 @@
     </div>
   </div>
   <!--アカウント編集時にプロフィールを入力できるようにフォームを追加-->
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= f.label :profile, "自己紹介(200文字以内)" %><br />
       <div class="control">
         <%= f.text_area :profile, autofocus: true, autocomplete: "profile", class: "input textarea is-primary", placeholder: "今年はスカイダイビングをします！" %>
       </div>
     </div>
   </div>
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
-      <%= f.submit "更新", class: "button is-link is-fullwidth" %>
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
+      <%= f.submit "更新", class: "button is-link is-outlined is-fullwidth" %>
     </div>
   </div>
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= link_to "キャンセル", user_path(current_user), class: "button is-light is-fullwidth" %>
     </div>
   </div>
   <% end %>
 
   <hr class="devise-link">
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <%= link_to "トップページ", root_path, class: 'button is-primary is-fullwidth' %>
     </div>
   </div>
-  <div class="columns">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="columns is-mobile">
+    <div class="column is-three-fifths is-offset-one-fifth">
       <% if current_user.admin? && !(@user.admin?) %>
       <%= link_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除しますか？" }, method: :delete, class: 'button is-danger is-fullwidth' %>
       <% end %>
