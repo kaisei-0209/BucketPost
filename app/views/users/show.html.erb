@@ -71,7 +71,13 @@
   <% end %>
 </div>
 <div class="tabContents" id="tab4">
-  ～コンテンツ内容～4
+  <% if @user.liked_posts.any? %>
+  <%= render 'posts/post_index', posts: @liked_posts %>
+  <% else %>
+  <div class="no-contents  justify-content has-text-centered">
+    いいねがありません。
+  </div>
+  <% end %>
 </div>
 
 
