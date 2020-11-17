@@ -21,7 +21,7 @@
           <p class="user_show_profile">
             <%= post.user.profile %>
           </p>
-          <% if post.user == current_user %>
+          <% if post.user == current_user || current_user.admin?%>
           <div class="post_link">
             <%= link_to edit_post_path(post), class: "button is-warning is-hovered" do %>
             <i class="fa fa-edit"></i>

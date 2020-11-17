@@ -32,4 +32,5 @@ def header_link_item(name, path)
   content_tag :li, class: class_name do
     link_to name, path, class: 'navber-link'
   end
+
 end

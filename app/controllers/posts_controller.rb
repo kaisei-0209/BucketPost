@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new show create destroy]
-  before_action :ensure_current_user, only: %i[edit update destroy]
+  before_action :ensure_current_user, only: %i[edit update]
 
   PER = 3
 

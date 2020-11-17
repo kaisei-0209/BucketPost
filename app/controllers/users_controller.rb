@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i[index destroy]
-  # before_action :admin_user,     only: :destroy
+  before_action :authenticate_user!, only: %i[show destroy]
+  before_action :admin_user,     only: %i[index]
 
   def index
     @users = User.all
@@ -13,11 +13,11 @@ class UsersController < ApplicationController
     @followers = @user.followers
   end
 
-  # private
-  #  # 管理者かどうか確認
-  #  def admin_user
-  #   redirect_to(root_url) unless current_user.admin?
-  # end
+  private
+  # 管理者かどうか確認
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 
   # フォローしているユーザー一覧
   def following
