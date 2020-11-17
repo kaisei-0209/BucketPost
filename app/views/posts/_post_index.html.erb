@@ -22,9 +22,7 @@
     </div>
     <nav class="level is-mobile">
       <div class="level-left">
-        <a class="level-item">
-          <span class="icon is-small"><i class="fas fa-comment fa-fw"></i></span>
-        </a>
+        <%= link_to  icon('fas', 'comment'), post_path(post), class: 'level-item' %>
         <%= render partial: '/likes/like_area', locals: { post: post} %>
       </div>
     </nav>

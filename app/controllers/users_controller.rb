@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @my_posts = @user.posts
     @followings = @user.following
     @followers = @user.followers
     @liked_posts = @user.liked_posts
