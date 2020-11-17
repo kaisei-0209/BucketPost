@@ -18,7 +18,7 @@
       <small><%= c.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
     </div>
   </div>
-  <% if c.user == current_user %>
+  <% if c.user == current_user || current_user.admin? %>
   <%= link_to post_comment_path(@post, c), method: :delete, data: { confirm: "削除しますか？" }  do %>
   <div class="media-right">
     <button class="delete"></button>
