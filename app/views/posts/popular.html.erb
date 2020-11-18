@@ -1,0 +1,5 @@
+<%= provide :title, "人気投稿ページ" %>
+
+<%= render 'post_index', posts: @popular_posts %>
+
+<%= paginate @popular_posts %>

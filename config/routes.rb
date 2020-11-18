@@ -18,6 +18,9 @@ end
   resources :posts do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
+    collection do
+      get :popular
+    end
   end
   root 'posts#index'
   resources :relationships, only: [:create, :destroy]

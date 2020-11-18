@@ -2,10 +2,14 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new show create destroy]
   before_action :ensure_current_user, only: %i[edit update]
 
-  PER = 3
+  PER = 10
 
   def index
     @posts = Post.page(params[:page]).per(PER)
+  end
+
+  def popular
+    @popular_posts = Post.unscoped.joins(:likes).group(:post_id).order(Arel.sql('count(likes.user_id) desc')).page(params[:page]).per(PER)
   end
 
   def new
