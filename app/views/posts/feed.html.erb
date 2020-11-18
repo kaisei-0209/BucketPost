@@ -1,0 +1,10 @@
+<%= provide :title, "フィード" %>
+<% if @feed_posts.any? %>
+<%= render 'post_index', posts: @feed_posts %>
+<% else %>
+<div class="no-contents  justify-content has-text-centered">
+  投稿、もしくは誰かをフォローしましょう
+</div>
+<% end %>
+
+<%= paginate @feed_posts %>

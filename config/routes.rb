@@ -20,6 +20,7 @@ end
     resources :likes, only: [:create, :destroy]
     collection do
       get :popular
+      get :feed
     end
   end
   root 'posts#index'

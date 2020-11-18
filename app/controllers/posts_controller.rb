@@ -12,6 +12,12 @@ class PostsController < ApplicationController
     @popular_posts = Post.unscoped.joins(:likes).group(:post_id).order(Arel.sql('count(likes.user_id) desc')).page(params[:page]).per(PER)
   end
 
+  def feed
+    return unless user_signed_in?
+
+    @feed_posts = current_user.feed.page(params[:page]).per(PER)
+  end
+
   def new
     @post = Post.new
   end
