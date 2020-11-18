@@ -57,9 +57,7 @@
               </div>
               <br>
               <div class="post_content">
-                <p>
-                  <%= simple_format(post.content) %>
-                </p>
+                <%= simple_format(post.content) %>
                 <!--画像表示-->
                 <%= image_tag post.image.url if post.image.present? %>
               </div>

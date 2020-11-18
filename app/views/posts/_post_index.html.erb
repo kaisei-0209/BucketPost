@@ -16,7 +16,7 @@
       </div>
       <br>
       <div class="post_content">
-        <p><%= link_to simple_format(post.content), post_path(post) %></p>
+        <%= link_to simple_format(post.content), post_path(post) %>
         <%= image_tag post.image.url if post.image.present? %>
       </div>
     </div>
