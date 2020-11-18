@@ -13,7 +13,7 @@
     <div class="content">
       <p><strong><%= c.user.name %></strong>
         <br>
-        <%= c.content %>
+        <%= simple_format(c.content) %>
       </p>
       <small><%= c.updated_at.strftime("%Y-%m-%d %H:%M") %></small>
     </div>
