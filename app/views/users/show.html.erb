@@ -27,7 +27,7 @@
               <%= render "follow_form" %>
               <% end %>
               <div class="user-profile" style="max-width: 400px; max-height: 140px; overflow: hidden;">
-                <%= @user.profile %>
+                <%= simple_format(@user.profile) %>
               </div>
             </div>
           </div>

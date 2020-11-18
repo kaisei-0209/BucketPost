@@ -19,7 +19,7 @@
             プロフィール
           </p>
           <p class="user_show_profile">
-            <%= post.user.profile %>
+            <%= simple_format(post.user.profile) %>
           </p>
           <% if post.user == current_user || current_user.admin?%>
           <div class="post_link">
@@ -58,7 +58,7 @@
               <br>
               <div class="post_content">
                 <p>
-                  <%= post.content %>
+                  <%= simple_format(post.content) %>
                 </p>
                 <!--画像表示-->
                 <%= image_tag post.image.url if post.image.present? %>
