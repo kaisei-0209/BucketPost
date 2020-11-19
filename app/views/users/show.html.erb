@@ -52,7 +52,7 @@
   <%= render 'posts/post_index', posts: @my_posts %>
   <% else %>
   <div class="no-contents  justify-content has-text-centered">
-    誰もフォローしていません
+    投稿がありません
   </div>
   <% end %>
 </div>
@@ -72,7 +72,7 @@
   <%= render 'show_follows', objects: @followers %>
   <% else %>
   <div class="no-contents  justify-content has-text-centered">
-    誰もフォローしていません
+    フォロワーがいません
   </div>
   <% end %>
 </div>
