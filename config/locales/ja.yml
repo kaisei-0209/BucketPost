@@ -1,6 +1,8 @@
 ja:
   activerecord:
     attributes:
+      user:
+        name: ユーザー名
       post:
         title: タイトル
         content: やりたいこと
