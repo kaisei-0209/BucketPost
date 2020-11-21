@@ -1,5 +1,5 @@
 <%= provide :title, "新規ユーザー登録" %>
-<%= devise_error_messages %>
+<%= render "devise/shared/error_messages", resource: resource %>
 
 <div class="container user-form">
   <h2 class="form_title has-text-centered">新規登録</h2>

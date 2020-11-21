@@ -10,9 +10,9 @@ class User < ApplicationRecord
                   presence: true,
                   uniqueness: { case_sensitive: true },
                   length: { maximum: 255 },
-                  format: { with: VALID_EMAIL_REGEX }
+                  format: { with: VALID_EMAIL_REGEX, allow_blank: true }
         #createアクションにのみpasswordを適用する
-        validates :password, presence: true, length: { minimum: 6 }, on: :create
+        validates :password, presence: true, length: { minimum: 6, allow_blank: true }, on: :create
         validates :profile, length: { maximum: 200 }
 
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship",  dependent: :destroy
@@ -40,28 +40,15 @@ class User < ApplicationRecord
     self.likes.exists?(post_id: post.id)
   end
 
-        #passowordなしでアップデートする
-        def update_without_current_password(params, *options)
-          params.delete(:current_password)
-
-          if params[:password].blank? && params[:password_confirmation].blank?
-            params.delete(:password)
-            params.delete(:password_confirmation)
-          end
-
-          result = update_attributes(params, *options)
-          clean_up_passwords
-          result
-        end
-        mount_uploader :image, ImageUploader
-        has_many :posts, dependent: :destroy
-        has_many :likes, dependent: :destroy
-        has_many :liked_posts, through: :likes, source: :post
-        has_many :comments, dependent: :destroy
-        #投稿一覧などのユーザーに紐づく投稿を複数取得する
-        def posts
-          return Post.where(user_id: self.id)
-        end
+  mount_uploader :image, ImageUploader
+  has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
+  has_many :comments, dependent: :destroy
+  #投稿一覧などのユーザーに紐づく投稿を複数取得する
+  def posts
+    return Post.where(user_id: self.id)
+  end
 
   # フィードを返す
   def feed
