@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-
+  before_action :check_gest, only: [:edit, :update]
   # GET /resource/sign_up
   # def new
   #   super
@@ -70,6 +70,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #nameカラムをアップデートする
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+  end
+
+  def check_gest
+    if resource.email == "guest@example.com"
+      redirect_to root_path, alert: "ゲストユーザーの編集はできません"
+    end
   end
 
   # The path used after sign up.

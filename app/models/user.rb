@@ -58,6 +58,7 @@ class User < ApplicationRecord
                     OR user_id = :user_id", user_id: id)
   end
 
+  #ゲストユーザーを作成
   def self.guest
     find_or_create_by!(name: 'ゲスト', email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
