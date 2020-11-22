@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new show create destroy]
-  before_action :ensure_current_user, only: %i[edit update]
+  before_action :authenticate_user!, only: %i[new show edit update create destroy]
+  before_action :ensure_current_user, only: %i[edit update destroy]
 
   PER = 10
 
@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   def ensure_current_user
     post = Post.find(params[:id])
     if post.user_id != current_user.id
-      redirect_to action: :index
+      redirect_to root_path
     end
   end
 
