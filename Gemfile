@@ -82,3 +82,6 @@ gem 'font-awesome-sass'
 
 #ページネーション機能を追加
 gem 'kaminari'
+
+#ダミーデータを使用
+gem 'faker'
