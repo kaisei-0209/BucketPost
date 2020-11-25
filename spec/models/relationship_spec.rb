@@ -10,6 +10,12 @@ RSpec.describe Relationship, type: :model do
       expect(relationship).to be_valid
     end
 
+    it "同じfollowerとfollowingの組み合わせが2回以上保存されないこと" do
+      relationship = build(:relationship, follower: follower, following: following)
+      relationship.valid?
+      expect(relationship).to_not be_valid
+    end
+
     it "follower_idがなければ保存できない" do
       relationship.follower_id = nil
       expect(relationship).to_not be_valid
