@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable
+        validate :password_valid?
         validates :name, presence: true, length: { maximum: 10 }
         VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
         before_validation { email.downcase! }
@@ -12,7 +13,7 @@ class User < ApplicationRecord
                   length: { maximum: 255 },
                   format: { with: VALID_EMAIL_REGEX, allow_blank: true }
         #createアクションにのみpasswordを適用する
-        validates :password, presence: true, length: { minimum: 6, allow_blank: true }, on: :create
+        validates :password, presence: true, length: { minimum: 6, maximum: 127, allow_blank: true }, on: :create
         validates :profile, length: { maximum: 200 }
 
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship",  dependent: :destroy
@@ -56,6 +57,12 @@ class User < ApplicationRecord
                     WHERE follower_id = :user_id"
     Post.where("user_id IN (#{following_ids})
                     OR user_id = :user_id", user_id: id)
+  end
+
+  def password_valid?
+    if password != password_confirmation
+      errors.add(:password_confirmation)
+    end
   end
 
   #ゲストユーザーを作成
