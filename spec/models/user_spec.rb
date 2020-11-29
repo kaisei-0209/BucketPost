@@ -14,6 +14,7 @@ RSpec.describe User, type: :model do
       name: "タロウ",
       email: "taro@example.com",
       password: "123456",
+      password_confirmation: "123456"
     )
     expect(user).to be_valid
   end
@@ -83,6 +84,12 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user).to_not be_valid
     end
+
+    it "パスワードが128文字以上の場合、無効であること" do
+      @user.password = @user.password_confirmation = "a" * 128
+      @user.valid?
+      expect(@user).to_not be_valid
+    end
   end
 
   describe "一意性の検証" do
@@ -101,11 +108,11 @@ RSpec.describe User, type: :model do
   end
 
   describe "パスワードの検証" do
-    # it "パスワードと確認用パスワードが間違っている場合、無効であること" do
-    #   @user.password = 'password'
-    #   @user.password_confirmation = 'pass'
-    #   expect(@user).to_not be_valid
-    # end
+    it "パスワードと確認用パスワードが間違っている場合、無効であること" do
+      @user.password = 'password'
+      @user.password_confirmation = 'pass'
+      expect(@user).to_not be_valid
+    end
 
     it "パスワードが暗号化されていること" do
       user = create(:user)
