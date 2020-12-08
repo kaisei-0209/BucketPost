@@ -85,3 +85,6 @@ gem 'kaminari'
 
 #ダミーデータを使用
 gem 'faker'
+
+#アプリ名変更
+gem 'rename'
